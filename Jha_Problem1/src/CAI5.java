@@ -13,8 +13,8 @@ public class CAI5 {
 		int correctResponse = 0;
 		for(int i = 0; i<numq; i++)
 		{
-			 int correct_answer = askQuestion(difficulty, qtype);
-			 int user_answer = readResponse();
+			 double correct_answer = askQuestion(difficulty, qtype);
+			 double user_answer = readResponse();
 			 correctResponse += isAnswerCorrect(correct_answer, user_answer);
 			
 		}
@@ -26,25 +26,25 @@ public class CAI5 {
 	}
 	
 	
-	public static int generateQuestionArgument(int x) {
+	public static double generateQuestionArgument(int x) {
 		if(x == 1)
 		{
-			int rand_int = rand.nextInt(10);
+			double rand_int = rand.nextInt(10);
 			return rand_int;
 		}
 		else if (x == 2)
 		{
-			int rand_int = rand.nextInt(100);
+			double rand_int = rand.nextInt(100);
 			return rand_int;
 		}
 		else if (x == 3)
 		{
-			int rand_int = rand.nextInt(1000);
+			double rand_int = rand.nextInt(1000);
 			return rand_int;
 		}
 		else if (x == 4)
 		{
-			int rand_int = rand.nextInt(10000);
+			double rand_int = rand.nextInt(10000);
 			return rand_int;
 		}
 		return 0;
@@ -77,24 +77,24 @@ public class CAI5 {
 	}
 	
 	
-	public static int askQuestion(int difficulty, int qtype)
+	public static double askQuestion(int difficulty, int qtype)
 	{
-		int rand_int1 = generateQuestionArgument(difficulty);
-		int rand_int2 = generateQuestionArgument(difficulty);
+		double rand_int1 = generateQuestionArgument(difficulty);
+		double rand_int2 = generateQuestionArgument(difficulty);
 		char operators[] = {'+', '-', '/', '*'}; //list to choose a random operator from
 		if(qtype == 1)
 		{
-			System.out.printf("What is %d + %d\n", rand_int1, rand_int2);
+			System.out.printf("What is %.0f + %.0f\n", rand_int1, rand_int2);
 			return rand_int1+rand_int2;
 		}
 		else if (qtype == 2)
 		{
-			System.out.printf("What is %d * %d\n", rand_int1, rand_int2);
+			System.out.printf("What is %.0f * %.0f\n", rand_int1, rand_int2);
 			return rand_int1*rand_int2;
 		}
 		else if (qtype == 3)
 		{
-			System.out.printf("What is %d - %d\n", rand_int1, rand_int2);
+			System.out.printf("What is %.0f - %.0f\n", rand_int1, rand_int2);
 			return rand_int1-rand_int2;
 		}
 		else if (qtype == 4)
@@ -108,7 +108,7 @@ public class CAI5 {
 			}
 			
 			}
-		System.out.printf("What is %d / %d\n", rand_int1, rand_int2);
+		System.out.printf("What is %.0f / %.0f\n", rand_int1, rand_int2);
 		return rand_int1/rand_int2;
 		}
 		else if (qtype == 5)
@@ -116,17 +116,17 @@ public class CAI5 {
 			int ind = rand.nextInt(4);
 			if (operators[ind] == '+')
 			{
-				System.out.printf("What is %d %c %d\n", rand_int1, operators[ind] ,rand_int2);
+				System.out.printf("What is %.0f %c %.0f\n", rand_int1, operators[ind] ,rand_int2);
 				return rand_int1+rand_int2;
 			}
 			else if (operators[ind] == '*')
 			{
-				System.out.printf("What is %d %c %d\n", rand_int1, operators[ind] ,rand_int2);
+				System.out.printf("What is %.0f %c %.0f\n", rand_int1, operators[ind] ,rand_int2);
 				return rand_int1*rand_int2;
 			}
 			else if (operators[ind] == '-')
 			{
-				System.out.printf("What is %d %c %d\n", rand_int1, operators[ind] ,rand_int2);
+				System.out.printf("What is %.0f %c %.0f\n", rand_int1, operators[ind] ,rand_int2);
 				return rand_int1-rand_int2;
 			}
 			else if (operators[ind] == '/')
@@ -141,7 +141,7 @@ public class CAI5 {
 				}
 				
 				}
-			System.out.printf("What is %d %c %d\n", rand_int1, operators[ind] ,rand_int2);
+			System.out.printf("What is %.0f %c %.0f\n", rand_int1, operators[ind] ,rand_int2);
 			return rand_int1/rand_int2;
 			}
 		}
@@ -149,17 +149,17 @@ public class CAI5 {
 	}
 	
 	
-	public static int readResponse()
+	public static double readResponse()
 	{
-		int userInput = scanner.nextInt();
+		double userInput = scanner.nextDouble();
 		return userInput;
 	}
 	
 	
-	public static int isAnswerCorrect(int canswer, int uanswer)
+	public static int isAnswerCorrect(double canswer, double uanswer)
 	{
 		
-		if (canswer == uanswer)
+		if (Math.abs(canswer - uanswer) < 0.01)
 		{
 			displayCorrectResponse();
 			return 1;
