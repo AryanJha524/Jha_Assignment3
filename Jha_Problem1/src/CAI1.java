@@ -24,8 +24,6 @@ public class CAI1 {
 	
 	public static int readResponse()
 	{
-		
-		//Scanner scanner = new Scanner(System.in);
 		int userInput = scanner.nextInt();
 		return userInput;
 	}

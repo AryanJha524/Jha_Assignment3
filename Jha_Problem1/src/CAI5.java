@@ -178,6 +178,10 @@ public class CAI5 {
 	public static void displayCorrectResponse()
 	{
 				int choice = rand.nextInt(5);
+				if(choice == 0)
+				{
+					choice += 1;
+				}
 				switch(choice) {
 				case 1:
 					System.out.println("Very Good!");
@@ -199,6 +203,10 @@ public class CAI5 {
 	public static void displayIncorrectResponse()
 	{
 		int choice = rand.nextInt(5);
+		if(choice == 0)
+		{
+			choice += 1;
+		}
 		switch(choice) {
 		case 1:
 			System.out.println("No. Please try again.");
