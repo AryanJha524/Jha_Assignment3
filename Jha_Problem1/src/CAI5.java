@@ -52,6 +52,7 @@ public class CAI5 {
 	
 	
 	public static int readProblemType() {
+		//outputs a human readable menu to select the type of problem. 
 		System.out.println("1. Addition");
 		System.out.println("2. Multiplication");
 		System.out.println("3. Subtraction");
@@ -84,6 +85,7 @@ public class CAI5 {
 		char operators[] = {'+', '-', '/', '*'}; //list to choose a random operator from
 		if(qtype == 1)
 		{
+			//we use %.0f to not print any decimals when outputting the question
 			System.out.printf("What is %.0f + %.0f\n", rand_int1, rand_int2);
 			return rand_int1+rand_int2;
 		}
@@ -99,10 +101,10 @@ public class CAI5 {
 		}
 		else if (qtype == 4)
 		{
-			//check for integer division, and divide  by 0
-			if(rand_int1 < rand_int2 || rand_int2 == 0)
+			//check for divide by 0
+			if(rand_int2 == 0)
 			{
-			while (rand_int2 == 0)
+			while (rand_int2 == 0) //generates random numbers until its not 0
 			{
 				rand_int2 = generateQuestionArgument(difficulty);
 			}
@@ -113,6 +115,8 @@ public class CAI5 {
 		}
 		else if (qtype == 5)
 		{
+			//for mixed problems, we randomly select an operator from the array declared above
+			//using a randomly generated index 
 			int ind = rand.nextInt(4);
 			if (operators[ind] == '+')
 			{
@@ -132,8 +136,9 @@ public class CAI5 {
 			else if (operators[ind] == '/')
 			{
 				
-				//check for integer division, and divide  by 0
-				if(rand_int1 < rand_int2 || rand_int2 == 0)
+				//check for divide by 0 and change values until the condition
+				//is broken. 
+				if(rand_int2 == 0)
 				{
 				while (rand_int2 == 0)
 				{
@@ -159,7 +164,9 @@ public class CAI5 {
 	public static int isAnswerCorrect(double canswer, double uanswer)
 	{
 		
-		if (Math.abs(canswer - uanswer) < 0.01)
+		if (Math.abs(canswer - uanswer) < 0.001) 
+			//since some values of division are repeating, or very long, this gives the
+			//user a margin of error of 3 decimal places. 
 		{
 			displayCorrectResponse();
 			return 1;

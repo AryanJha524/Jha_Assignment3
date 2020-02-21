@@ -7,17 +7,19 @@ public class CAI3 {
 	private static SecureRandom rand = new SecureRandom();
 	private static int numq = 10;
 	
-	public static void  quiz()
+	public static void quiz()
 	{
 		int correctResponse = 0;
 		for(int i = 0; i<numq; i++)
+		//loops through 10 times
 		{
 			 int correct_answer = askQuestion();
 			 int user_answer = readResponse();
 			 correctResponse += isAnswerCorrect(correct_answer, user_answer);
 			
 		}
-		
+		//have to convert correctResponse to a float to perform percentage calculation
+		//so we multiply by 1.0
 		 double percentage = (correctResponse*1.0/numq)*100;
 		 displayCompletionMessage(percentage);
 		
@@ -126,9 +128,14 @@ public class CAI3 {
 	
 
 	public static void main(String[] args) {
+		
+		//call quiz before asking user if they want to start, so code executes at least
+		//one time 
 		quiz();
 
 		String choice = "y";
+		//initialize choice to 'y' so program executes at least once, then the user can
+		//change choice to either yes or no. 
 		while (choice.equals("y"))
 		{
 			System.out.print("Would you like to solve another set? (y/n): ");

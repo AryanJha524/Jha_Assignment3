@@ -8,7 +8,8 @@ public class CAI4 {
 	
 	public static void quiz()
 	{
-		int difficulty = readDifficulty();
+		int difficulty = readDifficulty(); //new function, changes the the size of 
+		//the random integers that are generated. 
 		int correctResponse = 0;
 		for(int i = 0; i<numq; i++)
 		{
@@ -25,6 +26,9 @@ public class CAI4 {
 	}
 	
 	public static int generateQuestionArgument(int x) {
+		
+		//depending on x (difficulty), the size of the random
+		//integer will be increased or decreased. 
 		if(x == 1)
 		{
 			int rand_int = rand.nextInt(10);
@@ -51,6 +55,8 @@ public class CAI4 {
 	public static int readDifficulty() {
 		System.out.println("What difficulty would you like to enter? (1-4)");
 		int userInput = scanner.nextInt();
+		
+		//invalid input checker, terminates program.  
 		if (userInput<0 || userInput>4)
 		{
 			System.out.print("Invalid input");

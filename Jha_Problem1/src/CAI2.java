@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class CAI2 {
 	
+	//set these objects of scanner and securerandom class as class variables, so 
+	//we can use them throughout the code
 	private static Scanner scanner = new Scanner(System.in);
 	private static SecureRandom rand = new SecureRandom();
 	
@@ -45,10 +47,14 @@ public class CAI2 {
 	public static void displayCorrectResponse()
 	{
 				int choice = rand.nextInt(5);
+				//choice can be 0, so we add 1 to it to prevent no message from being 
+				//displayed
 				if(choice == 0)
 				{
 					choice += 1;
 				}
+				
+				//random choice means random message is printed to the screen 
 				switch(choice) {
 				case 1:
 					System.out.println("Very Good!");
@@ -69,6 +75,8 @@ public class CAI2 {
 	public static void displayIncorrectResponse()
 	{
 		int choice = rand.nextInt(5);
+		//choice can be 0, so we add 1 to it to prevent no message from being 
+		//displayed
 		if(choice == 0)
 		{
 			choice += 1;

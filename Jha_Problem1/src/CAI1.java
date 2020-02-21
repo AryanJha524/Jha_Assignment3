@@ -6,7 +6,8 @@ public class CAI1 {
 	private static Scanner scanner = new Scanner(System.in);
 	public static void  quiz()
 	{
-		 int correct_answer = askQuestion();
+		//logic is to ask question (return the right answer) and compare with user answer
+		 int correct_answer = askQuestion(); 
 		 int user_answer = readResponse();
 		 isAnswerCorrect(correct_answer, user_answer);
 	}
@@ -16,6 +17,7 @@ public class CAI1 {
 		SecureRandom rand = new SecureRandom();
 		int rand_int1 = rand.nextInt(10);
 		int rand_int2 = rand.nextInt(10);
+		//asks the question to the user
 		System.out.printf("What is %d + %d\n", rand_int1, rand_int2);
 		return rand_int1+rand_int2;
 		
@@ -24,6 +26,7 @@ public class CAI1 {
 	
 	public static int readResponse()
 	{
+		//take in the user input
 		int userInput = scanner.nextInt();
 		return userInput;
 	}
